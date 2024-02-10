@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.gray900};
-  padding: 2.5rem 0 10rem;
+  padding: 2.5rem 0 7.5rem;
 `
 
 export const HeaderContent = styled.div`
