@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import styled from 'styled-components'
+import * as Radio from '@radix-ui/react-radio-group'
 
 export const Overlay = styled(Dialog.Overlay)`
   position: fixed;
@@ -64,7 +65,7 @@ export const Content = styled(Dialog.Content)`
   }
 `
 
-export const TransactionTypeContainer = styled.div`
+export const TransactionTypeContainer = styled(Radio.Root)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -74,7 +75,7 @@ interface TransactionType {
   variant: 'income' | 'outcome'
 }
 
-export const TransactionTypeButton = styled.button<TransactionType>`
+export const TransactionTypeButton = styled(Radio.Item)<TransactionType>`
   background-color: ${(props) => props.theme.gray700};
   border-radius: 6px;
   height: 3.625rem;
@@ -91,5 +92,12 @@ export const TransactionTypeButton = styled.button<TransactionType>`
   svg {
     color: ${(props) =>
       props.variant === 'income' ? props.theme.green300 : props.theme.red300};
+  }
+
+  &[data-state='checked'] {
+    background-color: ${(props) => props.theme.gray300};
+    color: ${(props) =>
+      props.variant === 'income' ? props.theme.green300 : props.theme.red300};
+    opacity: 0.8;
   }
 `
