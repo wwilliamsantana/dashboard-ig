@@ -1,0 +1,20 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "description": "Desenvolvimento de site",
+            "type": "income",
+            "category": "job",
+            "price": 15000,
+            "createdAt": "2024-02-14T14:53:58.567Z"
+        },
+        {
+            "id": 2,
+            "description": "Turbo",
+            "type": "outcome",
+            "category": "hobby",
+            "price": 7000,
+            "createdAt": "2024-02-14T18:53:58.567Z"
+        }
+    ]
+}
