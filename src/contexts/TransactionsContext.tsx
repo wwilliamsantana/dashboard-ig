@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
-interface TransactionsProps {
+export interface TransactionsProps {
   id: number
   description: string
   type: 'income' | 'outcome'

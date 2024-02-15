@@ -15,6 +15,30 @@
             "category": "hobby",
             "price": 7000,
             "createdAt": "2024-02-14T18:53:58.567Z"
+        },
+        {
+            "id": 3,
+            "description": "Intercooler",
+            "type": "outcome",
+            "category": "hobby",
+            "price": 4000,
+            "createdAt": "2024-02-15T18:53:58.567Z"
+        },
+        {
+            "id": 5,
+            "description": "Retifica",
+            "type": "outcome",
+            "category": "hobby",
+            "price": 2530,
+            "createdAt": "2024-02-15T18:53:58.567Z"
+        },
+        {
+            "id": 6,
+            "description": "Desenvolvimento",
+            "type": "income",
+            "category": "job",
+            "price": 8000,
+            "createdAt": "2024-02-15T18:53:58.567Z"
         }
     ]
 }
