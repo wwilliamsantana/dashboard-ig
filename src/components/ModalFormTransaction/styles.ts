@@ -95,9 +95,9 @@ export const TransactionTypeButton = styled(Radio.Item)<TransactionType>`
   }
 
   &[data-state='checked'] {
-    background-color: ${(props) => props.theme.gray300};
-    color: ${(props) =>
-      props.variant === 'income' ? props.theme.green300 : props.theme.red300};
-    opacity: 0.8;
+    background-color: ${(props) =>
+      props.variant === 'income' ? props.theme.green700 : props.theme.red700};
+    color: ${(props) => props.theme.gray100};
+    font-weight: bold;
   }
 `
