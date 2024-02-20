@@ -10,6 +10,8 @@ import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 import { Controller, useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext } from 'react'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 const modalSchema = z.object({
   description: z.string().min(1),
@@ -21,12 +23,22 @@ const modalSchema = z.object({
 type SchemaProps = z.infer<typeof modalSchema>
 
 export function ModalFormTransaction() {
-  const { handleSubmit, register, control } = useForm<SchemaProps>({
+  const { createNewTransaction } = useContext(TransactionsContext)
+  const { handleSubmit, register, control, reset } = useForm<SchemaProps>({
     resolver: zodResolver(modalSchema),
   })
 
   function handleSubmitForm(data: SchemaProps) {
-    console.log(data)
+    const { category, price, description, type } = data
+
+    createNewTransaction({
+      category,
+      price,
+      description,
+      type,
+      createdAt: String(new Date()),
+    })
+    reset()
   }
 
   return (

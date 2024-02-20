@@ -1,7 +1,8 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
+import { api } from '../utils/apiConnect'
 
 export interface TransactionsProps {
-  id: number
+  id?: number
   description: string
   type: 'income' | 'outcome'
   category: string
@@ -11,6 +12,8 @@ export interface TransactionsProps {
 
 interface TransactionContextProps {
   transactions: TransactionsProps[]
+  getDataTransactions: (query?: string) => void
+  createNewTransaction: (data: TransactionsProps) => void
 }
 
 export const TransactionsContext = createContext({} as TransactionContextProps)
@@ -22,19 +25,32 @@ interface TransactionProviderProps {
 export function TransactionsProvider({ children }: TransactionProviderProps) {
   const [transactions, setTransactions] = useState<TransactionsProps[]>([])
 
-  async function loadingTransactionServer() {
-    const response = await fetch('http://localhost:3000/transactions')
-    const data = await response.json()
+  async function getDataTransactions(query?: string) {
+    const response = await api.get('/transactions', {
+      params: {
+        q: query,
+        _sort: 'createdAt',
+        _order: 'desc',
+      },
+    })
 
-    setTransactions(data)
+    setTransactions(response.data)
+  }
+
+  async function createNewTransaction(data: TransactionsProps) {
+    const post = await api.post('/transactions', data)
+
+    setTransactions((state) => [post.data, ...state])
   }
 
   useEffect(() => {
-    loadingTransactionServer()
+    getDataTransactions()
   }, [])
 
   return (
-    <TransactionsContext.Provider value={{ transactions }}>
+    <TransactionsContext.Provider
+      value={{ transactions, getDataTransactions, createNewTransaction }}
+    >
       {children}
     </TransactionsContext.Provider>
   )

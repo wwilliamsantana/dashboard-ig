@@ -4,7 +4,7 @@ export const TransactionTableContainer = styled.main`
   max-width: 1120px;
 
   padding: 0 1.25rem;
-  margin: 4rem auto 0;
+  margin: 4rem auto 2rem;
 `
 
 export const TransactionTable = styled.table`
